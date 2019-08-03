@@ -1,0 +1,23 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Danny Koppenhagen
+	email = mail@d-koppenhagen.de
+[pull]
+	rebase = true
+[core]
+	editor = vim
+	excludesfile = /Users/dannykoppenhagen/.gitignore_global
+[color]
+	ui = auto
+[alias]
+	a = add
+	ca = commit -a
+	cam = commit -am
+	s = status
+	pom = push origin master
+	pog = push origin gh-pages
+	puom = pull origin master
+	puog = pull origin gh-pages
+	cob = checkout -b
+	ci = commit
