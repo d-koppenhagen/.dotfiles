@@ -107,8 +107,19 @@ alias texstudio='open -a /Applications/texstudio.app'
 alias dev='cd ~/dev'
 alias play='cd ~/dev/playground && ls -l'
 alias genyshell='/Applications/Genymotion\ Shell.app/Contents/MacOS/genyshell'
+alias npmcheck='npm outdated -g --depth=0; echo "Please run npm update -g --depth=0 to update all global packages"'
 
 ### Functions Start
+# shortcut for open TexStudio within given path
+function texstudio() {
+  TEXSTUDIO_PATH="/Applications/texstudio.app/Contents/MacOS/texstudio"
+  if [[ ! -e $TEXSTUDIO_PATH ]]; then
+    echo "TexStudio App not found. Expected in: $TEXSTUDIO_PATH"
+  else
+    $TEXSTUDIO_PATH "$1" &
+  fi
+}
+
 # Create a new directory and enter it
 function mkd() {
   mkdir -p "$@" && cd "$@"
