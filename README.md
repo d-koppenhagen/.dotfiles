@@ -14,16 +14,6 @@ Basic git configuration and shortcuts
 
 Some settings for macOS, for configuring finder, Desktop, enabling some debug options, display options (hidden files, file extensions, etc.)
 
-## .brew
-
-it contains a list of installed brew packages which is listes by running `brew list > ${HOME}/dev/.dotfiles/.brew`.
-To install all listed packages, simply run: `xargs brew install < ${HOME}/dev/.dotfiles/.brew`
-
-## .cask
-
-it contains a list of installed homebrew cask packages which is listes by running `brew cask list > ${HOME}/dev/.dotfiles/.cask`.
-To install all listed packages, simply run: `xargs brew cask install < ${HOME}/dev/.dotfiles/.cask`
-
 ## .profile
 
 Some common `$PATH` and other environment variable exports.
@@ -55,3 +45,16 @@ my zsh configuration using _oh-my-zsh_. In this config some basic aliasses and f
 ## com.googlecode.iterm2.plist
 
 Not really a _dotfile_ but nonetheless usefull: my iTerm2 configuration.
+
+## Brewfile
+
+The `Brewfile` contains the installed package configuration. You can simply
+install the packages in the file by running `brew bundle` if you are in the
+current directory or by using the path to the file:
+`brew bundle ${HOME}/dev/.dotfiles/Brewfile`.
+It will install the packages from `brew`, `cask` and `mas`.
+
+Creating a new file can be achieved by exporting it e.g. via `cakebrew`:
+
+- Tools
+- Export Brew Installation
