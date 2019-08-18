@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/dannykoppenhagen/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -246,19 +246,15 @@ fromhex(){
 ### Functions End
 
 ###-tns-completion-start-###
-if [ -f /Users/dannykoppenhagen/.tnsrc ]; then
-    source /Users/dannykoppenhagen/.tnsrc
-fi
-
-###-tns-completion-start-###
-if [ -f /Users/dannykoppenhagen/.tnsrc ]; then
-    source /Users/dannykoppenhagen/.tnsrc
+if [ -f ${HOME}/.tnsrc ]; then
+    source ${HOME}/.tnsrc
 fi
 ###-tns-completion-end-###
 
-# Go development
+### Go development Start
 export GOPATH="${HOME}/dev/.go"
 export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 test -d "${GOPATH}" || mkdir "${GOPATH}"
 test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+### Go development End
