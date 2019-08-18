@@ -14,6 +14,16 @@ Basic git configuration and shortcuts
 
 Some settings for macOS, for configuring finder, Desktop, enabling some debug options, display options (hidden files, file extensions, etc.)
 
+## .brew
+
+it contains a list of installed brew packages which is listes by running `brew list > ${HOME}/dev/.dotfiles/.brew`.
+To install all listed packages, simply run: `xargs brew install < ${HOME}/dev/.dotfiles/.brew`
+
+## .cask
+
+it contains a list of installed homebrew cask packages which is listes by running `brew cask list > ${HOME}/dev/.dotfiles/.cask`.
+To install all listed packages, simply run: `xargs brew cask install < ${HOME}/dev/.dotfiles/.cask`
+
 ## .profile
 
 Some common `$PATH` and other environment variable exports.
