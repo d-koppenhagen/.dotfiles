@@ -83,9 +83,9 @@ source $ZSH/oh-my-zsh.sh
 
 #Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
+  export EDITOR='vim'
 else
-   export EDITOR='mvim'
+  export EDITOR='mvim'
 fi
 
 # Compilation flags
@@ -191,15 +191,15 @@ function getcertnames() {
     local certText=$(echo "${tmp}" \
       | openssl x509 -text -certopt "no_header, no_serial, no_version, \
       no_signame, no_validity, no_issuer, no_pubkey, no_sigdump, no_aux");
-      echo "Common Name:"
-      echo # newline
-      echo "${certText}" | grep "Subject:" | sed -e "s/^.*CN=//";
-      echo # newline
-      echo "Subject Alternative Name(s):"
-      echo # newline
-      echo "${certText}" | grep -A 1 "Subject Alternative Name:" \
-        | sed -e "2s/DNS://g" -e "s/ //g" | tr "," "\n" | tail -n +2
-      return 0
+    echo "Common Name:"
+    echo # newline
+    echo "${certText}" | grep "Subject:" | sed -e "s/^.*CN=//";
+    echo # newline
+    echo "Subject Alternative Name(s):"
+    echo # newline
+    echo "${certText}" | grep -A 1 "Subject Alternative Name:" \
+      | sed -e "2s/DNS://g" -e "s/ //g" | tr "," "\n" | tail -n +2
+    return 0
   else
     echo "ERROR: Certificate not found.";
     return 1
@@ -235,19 +235,19 @@ function tre() {
 }
 
 fromhex(){
-    hex=${1#"#"}
-    r=$(printf '0x%0.2s' "$hex")
-    g=$(printf '0x%0.2s' ${hex#??})
-    b=$(printf '0x%0.2s' ${hex#????})
-    printf '%03d' "$(( (r<75?0:(r-35)/40)*6*6 +
-                       (g<75?0:(g-35)/40)*6   +
-                       (b<75?0:(b-35)/40)     + 16 ))"
+  hex=${1#"#"}
+  r=$(printf '0x%0.2s' "$hex")
+  g=$(printf '0x%0.2s' ${hex#??})
+  b=$(printf '0x%0.2s' ${hex#????})
+  printf '%03d' "$(( (r<75?0:(r-35)/40)*6*6 +
+    (g<75?0:(g-35)/40)*6   +
+    (b<75?0:(b-35)/40)     + 16 ))"
 }
 ### Functions End
 
 ###-tns-completion-start-###
 if [ -f ${HOME}/.tnsrc ]; then
-    source ${HOME}/.tnsrc
+  source ${HOME}/.tnsrc
 fi
 ###-tns-completion-end-###
 
@@ -258,3 +258,7 @@ export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 test -d "${GOPATH}" || mkdir "${GOPATH}"
 test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 ### Go development End
+
+### Adds sbin to path
+export PATH="/usr/local/sbin:$PATH"
+###
