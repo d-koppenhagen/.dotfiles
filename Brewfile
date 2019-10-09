@@ -12,7 +12,6 @@ brew "fontconfig"
 brew "gdbm"
 brew "gettext"
 brew "libffi"
-brew "openssl"
 brew "pcre"
 brew "readline"
 brew "sqlite"
@@ -20,18 +19,20 @@ brew "xz"
 brew "python", link: false
 brew "glib"
 brew "lzo"
+brew "openssl"
 brew "pixman"
 brew "cairo"
 brew "gmp"
 brew "libevent"
-brew "libtasn1"
 brew "libunistring"
+brew "libtasn1"
 brew "nettle"
 brew "p11-kit"
 brew "unbound"
 brew "gnutls"
 brew "emacs"
 brew "cask"
+brew "doitlive"
 brew "libogg"
 brew "flac"
 brew "frei0r"
@@ -98,12 +99,15 @@ cask "android-sdk"
 cask "cakebrew"
 cask "java8"
 cask "caskroom/fonts/font-hack-nerd-font"
+mas "All-in-One Messenger", id: 1456462087
 mas "aText", id: 488566438
 mas "CEWE FOTOWELT", id: 1321448290
 mas "Colors for Hue", id: 581915465
 mas "com.alice.mac.go2shell", id: 445770608
 mas "CopyClip", id: 595191960
+mas "Friendly Streaming", id: 553245401
 mas "GarageBand", id: 682658836
+mas "GIPHY CAPTURE", id: 668208984
 mas "HP Easy Scan", id: 967004861
 mas "HueParty", id: 792963035
 mas "iLightShow", id: 1217138942
