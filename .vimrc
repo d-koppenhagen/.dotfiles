@@ -19,7 +19,7 @@ Plugin 'mgechev/vim-jsx'
 " Add vim-surround
 Plugin 'tpope/vim-surround'
 " Add NERDTree
-Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/nerdtree'
 " Add MatchTagAlways
 Plugin 'valloric/MatchTagAlways'
 " Add coffeescript syntax
@@ -155,7 +155,7 @@ if has("autocmd")
   " Treat .md files as .markdown
   autocmd BufNewFile,BufRead *.md set syntax=markdown
   " Start NERDTree automatically
-  autocmd VimEnter * NERDTree
+  "autocmd VimEnter * NERDTree
   " Enable emmet for JavaScript and CSS files
   autocmd FileType html,css EmmetInstall
   " Indentation for CSS files
@@ -168,9 +168,9 @@ colorscheme nord
 " Emmet
 let g:user_emmet_install_global = 0
 " Toggle NERDTree
-nnoremap <C-e> :NERDTreeToggle<CR>
+"nnoremap <C-e> :NERDTreeToggle<CR>
 " Show hidden files in NERDTree
-let NERDTreeShowHidden=1
+"let NERDTreeShowHidden=1
 
 nnoremap <S-j> :m .+1<CR>
 nnoremap <S-k> :m .-2<CR>
