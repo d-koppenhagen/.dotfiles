@@ -9,7 +9,7 @@
 
 [core]
 	editor = vim
-	excludesfile = /Users/dannykoppenhagen/.gitignore
+	excludesfile = ~/.gitignore
 
 [color]
 	# Use colors in Git commands that are capable of colored output when
