@@ -84,3 +84,9 @@ When setting up your mac completely new, I recommend the following steps:
 - Link your dotfiles (`ln -sf ${HOME}/dev/.dotfiles/<DOTFILE> ${HOME}/<DOTFILE>`) or copy them (`cp ${HOME}/dev/.dotfiles/<DOTFILE> ${HOME}/<DOTFILE>`)
 - Install [iTerm2](https://www.iterm2.com)
 - Import / link iTerm2 configuration (Preferences -> Gerneral -> Preferences -> Load preferences from a custom URL or folder)
+
+
+### macOS TimeMachine
+
+Defines a list of directories (e.g. all `node_modules` directories inside the `~/dev`) that should be excluded from time machine backup (as they are quite big and can be re-installed by `npm i` after restoring a backup).
+To proceed, simply run `sh time-machine-excludes.sh`.
