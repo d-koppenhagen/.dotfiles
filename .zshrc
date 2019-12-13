@@ -108,6 +108,8 @@ alias dev='cd ~/dev'
 alias play='cd ~/dev/playground && ls -l'
 alias genyshell='/Applications/Genymotion\ Shell.app/Contents/MacOS/genyshell'
 alias npmcheck='npm outdated -g --depth=0; echo "Please run npm update -g --depth=0 to update all global packages"'
+alias ho='displayplacer "id:5C01BB7B-628D-D30F-5013-F8D88434C470 res:1920x1080 hz:60 color_depth:8 scaling:off origin:(0,0) degree:0" "id:AC98808D-3887-7124-69F6-BC1FDEDC34D5 res:1920x1080 hz:60 color_depth:8 scaling:off origin:(1920,0) degree:0"'
+alias ho3='displayplacer "id:5C01BB7B-628D-D30F-5013-F8D88434C470 res:1920x1080 hz:60 color_depth:8 scaling:off origin:(0,0) degree:0" "id:04DAED37-B945-D370-C8D0-B5EFAE246D77 res:1440x900 color_depth:4 scaling:on origin:(-1440,409) degree:0" "id:AC98808D-3887-7124-69F6-BC1FDEDC34D5 res:1920x1080 hz:60 color_depth:8 scaling:off origin:(1920,0) degree:0"'
 
 ### Functions Start
 # shortcut for open TexStudio within given path
