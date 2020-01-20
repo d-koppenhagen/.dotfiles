@@ -263,4 +263,7 @@ test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 
 ### Adds sbin to path
 export PATH="/usr/local/sbin:$PATH"
-###
+
+### Exclude node_modules from Time Machine Backu
+echo "updating node_module exclusions for time machine in background"
+find "$HOME/dev" -name "node_modules" -prune -type d -exec tmutil addexclusion {} \; &
