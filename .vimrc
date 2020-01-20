@@ -1,3 +1,19 @@
+" Centralize backups, swapfiles and undo history
+if empty(glob('~/.vim/tmp'))
+    silent !mkdir -p ~/.vim/tmp
+endif
+set directory=$HOME/.vim/tmp
+
+if empty(glob('~/.vim/undo'))
+    silent !mkdir -p ~/.vim/undo
+endif
+set directory=$HOME/.vim/undo
+
+if empty(glob('~/.vim/backups'))
+    silent !mkdir -p ~/.vim/backups
+endif
+set directory=$HOME/.vim/backups
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -6,7 +22,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
-
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
@@ -74,12 +89,6 @@ let mapleader=","
 " Don’t add empty newlines at the end of files
 set binary
 set noeol
-" Centralize backups, swapfiles and undo history
-set backupdir=~/.vim/backups
-set directory=~/.vim/swaps
-if exists("&undodir")
-  set undodir=~/.vim/undo
-endif
 " Set spaces indentation
 function SetIndent(n)
   let &tabstop=a:n
