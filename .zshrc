@@ -103,7 +103,6 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"
 alias ls='ls -G'
 alias ll='ls -lha'
 alias buch='cd ~/dev/Angular-Buch/buch'
-alias texstudio='open -a /Applications/texstudio.app'
 alias dev='cd ~/dev'
 alias play='cd ~/dev/playground && ls -l'
 alias genyshell='/Applications/Genymotion\ Shell.app/Contents/MacOS/genyshell'
