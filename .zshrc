@@ -1,9 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
-export ZSH="${HOME}/.oh-my-zsh"
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -64,7 +61,7 @@ HIST_STAMPS="dd.mm.yyyy"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  zsh-nvm
+  # zsh-nvm
   brew
   iterm2
   npm
@@ -91,9 +88,6 @@ fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-export SSH_KEY_PATH="~/.ssh/id_rsa"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -102,8 +96,8 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"
 # Example aliases
 alias ls='ls -G'
 alias ll='ls -lha'
-alias buch='cd ~/dev/Angular-Buch/buch'
-alias dev='cd ~/dev'
+alias buch="cd ${HOME}/dev/Angular-Buch/buch"
+alias dev="cd ${HOME}/dev"
 alias play='cd ~/dev/playground && ls -l'
 alias genyshell='/Applications/Genymotion\ Shell.app/Contents/MacOS/genyshell'
 alias npmcheck='npm outdated -g --depth=0; echo "Please run npm update -g --depth=0 to update all global packages"'
@@ -254,22 +248,10 @@ fi
 ###-tns-completion-end-###
 
 ### Go development Start
-export GOPATH="${HOME}/dev/.go"
-export GOROOT="$(brew --prefix golang)/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 test -d "${GOPATH}" || mkdir "${GOPATH}"
 test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 ### Go development End
 
-### Adds sbin to path
-export PATH="/usr/local/sbin:$PATH"
-
 ### Exclude node_modules from Time Machine Backu
 echo "updating node_module exclusions for time machine in background"
 ./time-machine-excludes.sh > /dev/null 2>&1 &
-
-
-### Sonarcube
-export SONAR_HOME=/usr/local/Cellar/sonar-scanner/4.3.0.2102/libexec
-export SONAR=$SONAR_HOME/bin export
-export PATH=$PATH:$SONAR
