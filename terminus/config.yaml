@@ -1,0 +1,51 @@
+terminal:
+  colorScheme:
+    name: Material
+    foreground: '#eceff1'
+    background: 'rgba(38, 50, 56, 1)'
+    selection: null
+    cursor: '#FFCC00'
+    colors:
+      - '#000000'
+      - '#D62341'
+      - '#9ECE58'
+      - '#FAED70'
+      - '#396FE2'
+      - '#BB80B3'
+      - '#2DDAFD'
+      - '#d0d0d0'
+      - 'rgba(255, 255, 255, 0.2)'
+      - '#FF5370'
+      - '#C3E88D'
+      - '#FFCB6B'
+      - '#82AAFF'
+      - '#C792EA'
+      - '#89DDFF'
+      - '#ffffff'
+  ligatures: false
+  frontend: xterm
+  cursor: block
+  environment: {}
+  profile: zsh
+  bell: visual
+  autoOpen: true
+hotkeys:
+  shell: {}
+  profile: {}
+serial: {}
+appearance:
+  theme: Standard
+  tabsLocation: top
+  vibrancy: false
+  opacity: 0.97
+  frame: thin
+  dock: top
+  dockScreen: current
+  dockFill: 0.55
+  dockHideOnBlur: true
+  css: '/* * { color: blue !important; } */'
+enableWelcomeTab: false
+pluginBlacklist: []
+titleControl:
+  replacePattern: ''
+  prefix: ''
