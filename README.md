@@ -94,4 +94,15 @@ When setting up your mac completely new, I recommend the following steps:
 ### macOS TimeMachine
 
 Defines a list of directories (e.g. all `node_modules` directories inside the `~/dev`) that should be excluded from time machine backup (as they are quite big and can be re-installed by `npm i` after restoring a backup).
-To proceed, simply run `sh time-machine-excludes.sh`.
+
+To update teh directories to be excluded frequently, simply add a cronjob:
+
+```bash
+crontab -e
+```
+
+Then enter a cronjob:
+
+```bash
+0 12 * * *  cd $HOME/dev/.dotfiles && ./time-machine-excludes.sh # every day at 12:00
+```
