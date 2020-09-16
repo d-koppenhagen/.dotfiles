@@ -253,5 +253,5 @@ test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 ### Go development End
 
 ### Exclude node_modules from Time Machine Backu
-echo "updating node_module exclusions for time machine in background"
-./time-machine-excludes.sh > /dev/null 2>&1 &
+# echo "updating node_module exclusions for time machine in background"
+# ./time-machine-excludes.sh > /dev/null 2>&1 &
