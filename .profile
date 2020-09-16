@@ -3,6 +3,7 @@ export SSH_KEY_PATH="${HOME}/.ssh/id_rsa"
 
 # set NVM environment
 export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
 
 # set Android Environment Variables
 # export JAVA_HOME=$(/usr/libexec/java_home) # latest java version
