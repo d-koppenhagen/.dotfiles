@@ -27,3 +27,6 @@ export PATH=$PATH:$SONAR
 
 ### Adds sbin to path
 export PATH="/usr/local/sbin:$PATH"
+
+### RabbitMQ
+export PATH=$PATH:/usr/local/opt/rabbitmq/sbin
