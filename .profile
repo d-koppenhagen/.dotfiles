@@ -16,9 +16,9 @@ export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/pl
 export PATH=${PATH}:${HOME}/Library/flutter/bin
 
 # set go dev env
-export GOPATH=${HOME}/dev/.go
+export GOPATH=$HOME/dev/go
 export GOROOT="$(brew --prefix golang)/libexec"
-export PATH=${PATH}:${GOPATH}/bin:${GOROOT}/bin
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
 ### Sonarcube
 export SONAR_HOME=/usr/local/Cellar/sonar-scanner/4.3.0.2102/libexec
