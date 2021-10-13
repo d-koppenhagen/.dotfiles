@@ -241,17 +241,11 @@ fromhex(){
 }
 ### Functions End
 
-###-tns-completion-start-###
-if [ -f ${HOME}/.tnsrc ]; then
-  source ${HOME}/.tnsrc
-fi
-###-tns-completion-end-###
-
 ### Go development Start
 test -d "${GOPATH}" || mkdir "${GOPATH}"
 test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 ### Go development End
 
-### Exclude node_modules from Time Machine Backu
-# echo "updating node_module exclusions for time machine in background"
-# ./time-machine-excludes.sh > /dev/null 2>&1 &
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/dannykoppenhagen/.sdkman"
+[[ -s "/Users/dannykoppenhagen/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/dannykoppenhagen/.sdkman/bin/sdkman-init.sh"
