@@ -48,6 +48,10 @@ In this config some basic aliasses and functions are already configured.
 This configuration file is used by the [Bubblewrap CLI](https://www.npmjs.com/package/@bubblewrap/cli) to generated signed TWA activities based on a PWA.
 It contains the path to the Android SDK and Java JDK 8.
 
+### `java.sh`
+
+Setup Java for macOS via homebrew and define the `$PATH`.
+
 ### `osx.sh`
 
 Some settings for macOS, for configuring finder, desktop, enabling debug options, display options (hidden files, file extensions, etc.).

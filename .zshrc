@@ -101,6 +101,7 @@ alias dev="cd ${HOME}/dev"
 alias play='cd ~/dev/playground && ls -l'
 alias genyshell='/Applications/Genymotion\ Shell.app/Contents/MacOS/genyshell'
 alias npmcheck='npm outdated -g --depth=0; echo "Please run npm update -g --depth=0 to update all global packages"'
+alias javaversions="/usr/libexec/java_home -V"
 
 # arrange displays (ho = Home Office)
 alias ho='displayplacer "id:5C01BB7B-628D-D30F-5013-F8D88434C470 res:1920x1080 hz:60 color_depth:8 scaling:off origin:(0,0) degree:0" "id:04DAED37-B945-D370-C8D0-B5EFAE246D77 res:1440x900 color_depth:4 scaling:on origin:(3840,288) degree:0" "id:AC98808D-3887-7124-69F6-BC1FDEDC34D5 res:1920x1080 hz:60 color_depth:8 scaling:off origin:(1920,0) degree:0"'
@@ -238,6 +239,17 @@ fromhex(){
   printf '%03d' "$(( (r<75?0:(r-35)/40)*6*6 +
     (g<75?0:(g-35)/40)*6   +
     (b<75?0:(b-35)/40)     + 16 ))"
+}
+
+# switch java jdk version
+# run `javaversions` to see available jdk versionss
+# run e.g. `jdk 11` when output contains `11.0.1 (x86_64)`. for example:
+# 11.0.1 (x86_64) "Oracle Corporation" - "Java SE 11.0.1" /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home
+jdk() {
+  version=$1
+  unset JAVA_HOME;
+  export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+  java -version
 }
 ### Functions End
 
