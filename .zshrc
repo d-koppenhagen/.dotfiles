@@ -261,3 +261,17 @@ test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/dannykoppenhagen/.sdkman"
 [[ -s "/Users/dannykoppenhagen/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/dannykoppenhagen/.sdkman/bin/sdkman-init.sh"
+
+# Add hook to actively load relevant nvm version from defined engine
+autoload -U add-zsh-hook
+node-version-switcher() {
+  local node_version="$(node -v | sed -E 's/v([[:digit:]]+).*/\1/g')"
+
+  if defined_version_range=$(node -pe "require('./package.json').engines.node" 2>/dev/null); then
+    local desired_major_version=$(echo $defined_version_range | sed -E 's/>=[ ]?([[:digit:]]+).*/\1/g')
+    echo Switching to "node${desired_major_version}"
+    eval "nvm use ${desired_major_version}"
+  fi
+}
+add-zsh-hook chpwd node-version-switcher
+node-version-switcher
