@@ -273,6 +273,20 @@ node-version-switcher() {
 add-zsh-hook chpwd node-version-switcher
 node-version-switcher
 
+# needed for git PGP-signed commits
+# also needed for sops
+GPG_TTY=$(tty)
+export GPG_TTY
+
+# Export Krew PATH
+export PATH="${PATH}:${HOME}/.krew/bin"
+
+# Mob
+export MOB_OPEN_COMMAND="code %s"
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
 if [ -e ~/.zshrc.local ]; then
   source ~/.zshrc.local
 fi
