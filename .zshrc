@@ -272,3 +272,7 @@ node-version-switcher() {
 }
 add-zsh-hook chpwd node-version-switcher
 node-version-switcher
+
+if [ -e ~/.zshrc.local ]; then
+  source ~/.zshrc.local
+fi
