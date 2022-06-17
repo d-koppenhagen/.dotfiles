@@ -79,7 +79,7 @@ An iTerm2 configuration file which can be used by configuring it in the preferen
 A `Brewfile` contains the installed package configuration for [_Homebrew_](https://brew.sh/index_de).
 You can simply install the packages from the file by running `brew bundle` if you are in the
 current directory or by using the path to the file:
-`brew bundle ${HOME}/dev/.dotfiles/Brewfile`.
+`brew bundle dump -f ${HOME}/dev/.dotfiles/Brewfile`.
 It will install the packages from `brew`, `cask` and `mas`.
 
 Creating a new file can be achieved by exporting it e.g. via [_Cakebrew_](https://www.cakebrew.com/):
