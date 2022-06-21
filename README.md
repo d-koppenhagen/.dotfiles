@@ -93,9 +93,8 @@ When setting up your mac completely new, I recommend the following steps:
 
 - proceed the macOS configuration (`sudo sh osh.sh`).
 - Install [Homebrew](https://brew.sh/index_de)
-- Install Homebrew packages via `Brewfile` (`brew bundle`).
+- Install Homebrew packages via `Brewfile` (`brew bundle`) including iTerm2.
 - Link your dotfiles (`sh link-dotfiles.sh`)
-- Install [iTerm2](https://www.iterm2.com)
 - Import / link iTerm2 configuration (Preferences -> Gerneral -> Preferences -> Load preferences from a custom URL or folder)
 
 
@@ -103,7 +102,7 @@ When setting up your mac completely new, I recommend the following steps:
 
 Defines a list of directories (e.g. all `node_modules` directories inside the `~/dev`) that should be excluded from time machine backup (as they are quite big and can be re-installed by `npm i` after restoring a backup).
 
-To update teh directories to be excluded frequently, simply add a cronjob:
+To update the directories to be excluded frequently, simply add a cronjob:
 
 ```bash
 crontab -e

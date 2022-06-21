@@ -1,6 +1,10 @@
 # ssh
 export SSH_KEY_PATH="${HOME}/.ssh/id_rsa"
 
+
+# brew
+eval $(/opt/homebrew/bin/brew shellenv)
+
 # set NVM environment
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
