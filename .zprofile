@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zprofile.pre.zsh" ]] && . "$HOME/.fig/shell/zprofile.pre.zsh"
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
 
@@ -5,3 +7,6 @@ export ZSH="${HOME}/.oh-my-zsh"
 if [ -f ~/.profile ]; then
   source ~/.profile
 fi
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zprofile.post.zsh" ]] && . "$HOME/.fig/shell/zprofile.post.zsh"
