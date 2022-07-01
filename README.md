@@ -12,15 +12,15 @@ A basic `.editorconfig` with some common settings.
 
 Basic git configuration file and some shortcuts
 
-### .profile
+### `.profile`
 
 Some common `$PATH` and other environment variable exports.
 
-### .vimrc
+### `.vimrc`
 
 A customized vim configuration using [_Vundle_](https://github.com/VundleVim/Vundle.vim) Plugin Manager.
 
-1. Istall Vundle:
+1. Install Vundle:
 
 ```bash
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -32,14 +32,14 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 :PluginInstall
 ```
 
-### .zprofile
+### `.zprofile`
 
 includes `.profile` dotfile for usage within zsh.
 
-### .zshrc
+### `.zshrc`
 
 A basic zsh configuration using [_oh-my-zsh_](https://github.com/robbyrussell/oh-my-zsh).
-In this config some basic aliasses and functions are already configured.
+In this config some basic aliases and functions are already configured.
 
 ## Other configuration files
 
