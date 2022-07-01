@@ -1,8 +1,16 @@
 #!/bin/bash
 
-echo "copying files that needs to be adjusted..."
-echo "copy gitconfig! -> adjust the user afterwards!"
+echo "copy global .gitconfig..."
 cp ${HOME}/dev/.dotfiles/.gitconfig ${HOME}/.gitconfig
+
+echo "Setup global Username / E-mail for default usage with git..."
+printf 'Name (e.g. "John Doe")?\t\t\t'
+IFS="" read -r git_user
+git config --global user.name "$git_user"
+
+printf 'E-Mail (e.g. "john.doe@example.org")?\t'
+read git_mail
+git config --global user.email "$git_mail"
 
 echo "symlinking files files..."
 ln -sf ${HOME}/dev/.dotfiles/.editorconfig ${HOME}/.editorconfig
