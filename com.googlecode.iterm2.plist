@@ -6,6 +6,8 @@
 	<string>A4ABB3A1-D642-402E-A287-FD13AA9E9172</string>
 	<key>DimBackgroundWindows</key>
 	<true/>
+	<key>EnableAPIServer</key>
+	<true/>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
 	<key>Hotkey</key>
