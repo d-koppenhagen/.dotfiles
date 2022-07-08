@@ -19,3 +19,6 @@ ln -sf ${HOME}/dev/.dotfiles/.vimrc ${HOME}/.vimrc
 ln -sf ${HOME}/dev/.dotfiles/.zprofile ${HOME}/.zprofile
 ln -sf ${HOME}/dev/.dotfiles/.zshrc ${HOME}/.zshrc
 ln -sf ${HOME}/dev/.dotfiles/.zshrc.local ${HOME}/.zshrc.local
+
+echo "activating/cloning zsh-autosuggestions"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions

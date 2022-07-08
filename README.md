@@ -64,7 +64,7 @@ sudo sh osx.sh
 
 > :warning: Keep in mind that this will be override some default settings of your mac and activate / deactivete features which are hidden in the macOS preferences and can only be set by using the command line. Check carefully all the settings in the script and adjust / uncomment them before running the script.
 
-### `link-dotfiles.sh`
+### `setup-dotfiles.sh`
 
 Setup symlinks to this project files to be always in sync when pulling changes
 
@@ -94,7 +94,7 @@ When setting up your mac completely new, I recommend the following steps:
 - proceed the macOS configuration (`sudo sh osh.sh`).
 - Install [Homebrew](https://brew.sh/index_de)
 - Install Homebrew packages via `Brewfile` (`brew bundle`) including iTerm2.
-- Link your dotfiles (`sh link-dotfiles.sh`)
+- Link your dotfiles (`sh setup-dotfiles.sh`)
 - Import / link iTerm2 configuration (Preferences -> Gerneral -> Preferences -> Load preferences from a custom URL or folder)
 
 
