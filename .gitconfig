@@ -10,6 +10,7 @@
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
+  ignorecase = false
 
 [color]
 	# Use colors in Git commands that are capable of colored output when
