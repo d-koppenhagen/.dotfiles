@@ -48,10 +48,6 @@ In this config some basic aliases and functions are already configured.
 This configuration file is used by the [Bubblewrap CLI](https://www.npmjs.com/package/@bubblewrap/cli) to generated signed TWA activities based on a PWA.
 It contains the path to the Android SDK and Java JDK 8.
 
-### `java.sh`
-
-Setup Java for macOS via homebrew and define the `$PATH`.
-
 ### `osx.sh`
 
 Some settings for macOS, for configuring finder, desktop, enabling debug options, display options (hidden files, file extensions, etc.).
@@ -96,7 +92,7 @@ When setting up your mac completely new, I recommend the following steps:
 - Install Homebrew packages via `Brewfile` (`brew bundle`) including iTerm2.
 - Link your dotfiles (`sh setup-dotfiles.sh`)
 - Import / link iTerm2 configuration (Preferences -> Gerneral -> Preferences -> Load preferences from a custom URL or folder)
-
+- Read setup Java as described in [java.md](./java.md)
 
 ### macOS TimeMachine
 
