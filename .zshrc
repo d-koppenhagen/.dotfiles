@@ -116,6 +116,11 @@ function texstudio() {
   fi
 }
 
+# Generate a new password
+function new-password() {
+  pwgen -B --capitalize --numerals --symbols 32 1 '--remove-chars=();@<>/`*#,:\&.={}%"|![]$?^~'\''_'
+}
+
 # Create a new directory and enter it
 function mkd() {
   mkdir -p "$@" && cd "$@"
@@ -288,6 +293,8 @@ export MOB_OPEN_COMMAND="code %s"
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+# Disable Angular Analytics globally
+NG_CLI_ANALYTICS=false
 
 if [ -e ~/.zshrc.local ]; then
   source ~/.zshrc.local
