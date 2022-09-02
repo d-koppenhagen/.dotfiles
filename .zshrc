@@ -112,7 +112,7 @@ function texstudio() {
   if [[ ! -e $TEXSTUDIO_PATH ]]; then
     echo "TexStudio App not found. Expected in: $TEXSTUDIO_PATH"
   else
-    $TEXSTUDIO_PATH "$1" &
+    $TEXSTUDIO_PATH "$1" &>/dev/null &
   fi
 }
 
