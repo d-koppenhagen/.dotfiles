@@ -18,6 +18,9 @@ export ANDROID_HOME=${HOME}/Library/Android/sdk
 export ANDROID_SDK_ROOT=${HOME}/Library/Android/sdk
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
 
+# Goolge Java Formatter
+export PATH=${PATH}:/opt/homebrew/bin/google-java-format
+
 # set flutter env
 export PATH=${PATH}:${HOME}/Library/flutter/bin
 
