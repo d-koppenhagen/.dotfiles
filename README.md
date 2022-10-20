@@ -109,3 +109,11 @@ Then enter a cronjob:
 ```bash
 0 12 * * *  cd $HOME/dev/.dotfiles && ./time-machine-excludes.sh # every day at 12:00
 ```
+
+## local mods
+
+The following files / directories are `.gitignore`'ed:
+
+- `.zshrc.local`: put your machine specific zsh modifications inside you don't wish to contribute. It's content is automatically loaded by the main `.zshrc` when available.
+- `setup-dotfiles.local.sh`: place machine specific setup steps you want to execute but not wish to contribute. This script is loaded when executing `setup-dotfiles.sh`.
+- `local`: place all other config file / templates you don't want to contribute inside this directory.
