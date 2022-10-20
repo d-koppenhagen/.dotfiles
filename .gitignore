@@ -2,3 +2,8 @@
 .bash_history
 .tmp
 .zshrc.local
+
+# ignore all files in "local" dir
+# such files are machine specific and should be committed publically
+setup-dotfiles.local.sh
+local
