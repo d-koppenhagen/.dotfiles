@@ -27,3 +27,8 @@ if [ -e setup-dotfiles.local.sh ]; then
   echo "Executing local setup script..."
   source setup-dotfiles.local.sh
 fi
+
+# link aws cli to be available in Leapp
+echo "symlinking aws cli tools from /opt/homebrew/ to /usr/local/bin/"
+sudo ln -s /opt/homebrew/bin/aws /usr/local/bin/aws
+sudo ln -s /opt/homebrew/bin/az /usr/local/bin/az
