@@ -32,3 +32,4 @@ fi
 echo "symlinking aws cli tools from /opt/homebrew/ to /usr/local/bin/"
 sudo ln -s /opt/homebrew/bin/aws /usr/local/bin/aws
 sudo ln -s /opt/homebrew/bin/az /usr/local/bin/az
+
