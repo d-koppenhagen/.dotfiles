@@ -69,6 +69,7 @@ plugins=(
   npm
   golang
   zsh-autosuggestions
+  nx-completion
 )
 
 source $ZSH/oh-my-zsh.sh
