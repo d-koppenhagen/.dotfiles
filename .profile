@@ -1,8 +1,5 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/profile.pre.bash" ]] && builtin source "$HOME/.fig/shell/profile.pre.bash"
 # ssh
 export SSH_KEY_PATH="${HOME}/.ssh/id_rsa"
-
 
 # brew
 eval $(/opt/homebrew/bin/brew shellenv)
@@ -29,6 +26,10 @@ export GOPATH=$HOME/dev/go
 export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
+# Graphviz
+export GRAPHVIZ_DOT="/opt/homebrew/bin/dot"
+export PATH=$PATH:$GRAPHVIZ_DOT
+
 ### Sonarcube
 export SONAR_HOME=/usr/local/Cellar/sonar-scanner/4.3.0.2102/libexec
 export SONAR=$SONAR_HOME/bin export
@@ -40,5 +41,4 @@ export PATH="/usr/local/sbin:$PATH"
 ### RabbitMQ
 export PATH=$PATH:/usr/local/opt/rabbitmq/sbin
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/profile.post.bash" ]] && builtin source "$HOME/.fig/shell/profile.post.bash"
+. "$HOME/.cargo/env"

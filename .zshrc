@@ -1,5 +1,3 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -63,7 +61,6 @@ HIST_STAMPS="dd.mm.yyyy"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  # zsh-nvm
   brew
   iterm2
   npm
@@ -267,20 +264,6 @@ test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 export SDKMAN_DIR="/Users/dannykoppenhagen/.sdkman"
 [[ -s "/Users/dannykoppenhagen/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/dannykoppenhagen/.sdkman/bin/sdkman-init.sh"
 
-# Add hook to actively load relevant nvm version from defined engine
-autoload -U add-zsh-hook
-node-version-switcher() {
-  local node_version="$(node -v | sed -E 's/v([[:digit:]]+).*/\1/g')"
-
-  if defined_version_range=$(node -pe "require('./package.json').engines.node" 2>/dev/null); then
-    local desired_major_version=$(echo $defined_version_range | sed -E 's/>=[ ]?([[:digit:]]+).*/\1/g')
-    echo Switching to "node${desired_major_version}"
-    eval "nvm use ${desired_major_version}"
-  fi
-}
-add-zsh-hook chpwd node-version-switcher
-node-version-switcher
-
 # needed for git PGP-signed commits
 # also needed for sops
 GPG_TTY=$(tty)
@@ -292,8 +275,6 @@ export PATH="${PATH}:${HOME}/.krew/bin"
 # Mob
 export MOB_OPEN_COMMAND="code %s"
 
-# Load Angular CLI autocompletion.
-source <(ng completion script)
 # Disable Angular Analytics globally
 NG_CLI_ANALYTICS=false
 
@@ -301,5 +282,18 @@ if [ -e ~/.zshrc.local ]; then
   source ~/.zshrc.local
 fi
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+export PNPM_HOME="/Users/dannykoppenhagen/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
+# bun completions
+[ -s "/Users/dannykoppenhagen/.bun/_bun" ] && source "/Users/dannykoppenhagen/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# eval fnm (fast node manager)
+eval "$(fnm env --use-on-cd --version-file-strategy recursive)"
+alias nvm='fnm'
+# enable corepack to auto-switch version based on packageManager field
+FNM_COREPACK_ENABLED=true
