@@ -7,6 +7,9 @@
 [pull]
 	rebase = true
 
+[commit]
+  template = ~/.gitmessage
+
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
