@@ -1,3 +1,5 @@
+# Kiro CLI pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/profile.pre.bash" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/profile.pre.bash"
 # ssh
 export SSH_KEY_PATH="${HOME}/.ssh/id_rsa"
 
@@ -42,3 +44,6 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH=$PATH:/usr/local/opt/rabbitmq/sbin
 
 . "$HOME/.cargo/env"
+
+# Kiro CLI post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/profile.post.bash" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/profile.post.bash"

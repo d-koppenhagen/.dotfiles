@@ -1,3 +1,5 @@
+# Kiro CLI pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -79,11 +81,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 #Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='vim'
-fi
+export EDITOR='/opt/homebrew/bin/code --wait'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -96,12 +94,13 @@ fi
 # Example aliases
 alias ls='ls -G'
 alias ll='ls -lha'
-alias buch="cd ${HOME}/dev/Angular-Buch/buch"
+
 alias dev="cd ${HOME}/dev"
 alias play='cd ~/dev/playground && ls -l'
 alias genyshell='/Applications/Genymotion\ Shell.app/Contents/MacOS/genyshell'
 alias npmcheck='npm outdated -g --depth=0; echo "Please run npm update -g --depth=0 to update all global packages"'
 alias javaversions="/usr/libexec/java_home -V"
+alias code='kiro'
 
 ### Functions Start
 # shortcut for open TexStudio within given path
@@ -297,3 +296,23 @@ eval "$(fnm env --use-on-cd --version-file-strategy recursive)"
 alias nvm='fnm'
 # enable corepack to auto-switch version based on packageManager field
 FNM_COREPACK_ENABLED=true
+
+source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+chruby system
+
+export GEM_HOME=$HOME/gems
+export PATH=$HOME/gems/bin:$PATH
+
+# Disable telemetry
+# see: https://github.com/aws/aws-cdk/issues/34892
+export CDK_DISABLE_CLI_TELEMETRY=true
+export STORYBOOK_DISABLE_TELEMETRY=1
+
+# Created by `pipx` on 2025-09-16 14:40:27
+export PATH="$PATH:/Users/dannykoppenhagen/.local/bin"
+
+# Kiro CLI post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
