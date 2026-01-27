@@ -11,7 +11,7 @@
   template = ~/.gitmessage
 
 [core]
-	editor = vim
+	editor = /opt/homebrew/bin/code --wait
 	excludesfile = ~/.gitignore
   ignorecase = false
 
