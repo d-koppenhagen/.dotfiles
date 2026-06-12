@@ -1,24 +1,32 @@
-# .dotfiles - and some other useful config files
+# .dotfiles — and some other useful config files
 
-This repository contains some common dotfiles I am using for my local dev environment.
+This repository contains common dotfiles and configuration for my local macOS dev environment.
 
-## Dotfiles - content
+## Dotfiles
 
 ### `.editorconfig`
 
-A basic `.editorconfig` with some common settings.
+A basic `.editorconfig` with common settings (spaces, indent size 2, UTF-8, LF line endings).
 
 ### `.gitconfig`
 
-Basic git configuration file and some shortcuts
+Git configuration with color settings, useful aliases (`a`, `ca`, `cam`, `s`, `cob`, `ci`, …), URL shorthands for GitHub/Gist, pull rebase by default, and LFS filter setup.
+
+### `.gitmessage`
+
+A commit message template following the [Angular Commit Message Format](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit) with examples for features, bug fixes, docs changes, and breaking changes.
+
+### `.gitignore`
+
+Global gitignore for `.DS_Store`, `.bash_history`, temporary files, and machine-specific local configs.
 
 ### `.profile`
 
-Some common `$PATH` and other environment variable exports.
+Environment variable exports for SSH, Homebrew, Android SDK, Go, Flutter, Rust (cargo), Graphviz, SonarQube, and RabbitMQ.
 
 ### `.vimrc`
 
-A customized vim configuration using [_Vundle_](https://github.com/VundleVim/Vundle.vim) Plugin Manager.
+A customized vim configuration using [Vundle](https://github.com/VundleVim/Vundle.vim) Plugin Manager with the Nord color scheme, airline, emmet, Go support, TypeScript support, and various quality-of-life settings.
 
 1. Install Vundle:
 
@@ -26,7 +34,7 @@ A customized vim configuration using [_Vundle_](https://github.com/VundleVim/Vun
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
-1. Install and activate the Plugins by opening `vim` and typing the following command:
+2. Install and activate the plugins by opening `vim` and running:
 
 ```vim
 :PluginInstall
@@ -34,81 +42,124 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 ### `.zprofile`
 
-includes `.profile` dotfile for usage within zsh.
+Sets up oh-my-zsh and includes the `.profile` dotfile for zsh usage.
 
 ### `.zshrc`
 
-A basic zsh configuration using [_oh-my-zsh_](https://github.com/robbyrussell/oh-my-zsh).
-In this config some basic aliases and functions are already configured.
+A zsh configuration using [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh) with the `muse` theme.
+
+Highlights:
+
+- **Plugins:** git, brew, iterm2, npm, golang, zsh-autosuggestions, nx-completion
+- **Node version management:** [fnm](https://github.com/Schniz/fnm) (fast node manager) with corepack support and `nvm` alias
+- **Java version management:** [SDKMAN](https://sdkman.io/)
+- **Ruby:** chruby with auto-switching
+- **Package managers:** pnpm, bun
+- **Editor:** Kiro (`code` is aliased to `kiro`)
+- **GPG signing** for git commits and sops
+- **Telemetry disabled** for CDK and Storybook
+- **Useful aliases:** `ll`, `dev`, `play`, `killport`, `new-password`, `jdk`, etc.
+- **Functions:** `mkd`, `targz`, `fs`, `digga`, `getcertnames`, `tre`, `killport`, and more
+
+### `.zshrc.local`
+
+Machine-specific zsh overrides (gitignored). Automatically sourced by `.zshrc` when present.
 
 ## Other configuration files
 
 ### `osx.sh`
 
-Some settings for macOS, for configuring finder, desktop, enabling debug options, display options (hidden files, file extensions, etc.).
-The file needs to be executed from the command line:
+macOS system preferences configuration — Finder, Dock, Trackpad, Safari, Terminal, Time Machine, hot corners, and more. Execute with:
 
 ```sh
-sudo chmod +x osx.sh
 sudo sh osx.sh
 ```
 
-> :warning: Keep in mind that this will be override some default settings of your mac and activate / deactivete features which are hidden in the macOS preferences and can only be set by using the command line. Check carefully all the settings in the script and adjust / uncomment them before running the script.
+> ⚠️ This will override some default macOS settings and activate/deactivate features that are hidden in the macOS preferences. Check carefully all settings in the script and adjust them before running.
 
 ### `setup-dotfiles.sh`
 
-Setup symlinks to this project files to be always in sync when pulling changes
+Copies `.gitconfig`, prompts for git user name/email, symlinks dotfiles to `$HOME`, clones zsh-autosuggestions, and runs `setup-dotfiles.local.sh` if present. Also symlinks AWS/Azure CLI tools from Homebrew to `/usr/local/bin/` for Leapp compatibility.
 
-### com.googlecode.iterm2.plist
+### `setup-dotfiles.local.sh`
 
-An iTerm2 configuration file which can be used by configuring it in the preferences.
+Machine-specific setup steps (gitignored). Automatically executed by `setup-dotfiles.sh` when present.
+
+### `setup-go.sh`
+
+Installs Go via Homebrew and creates the Go workspace directories (`$HOME/dev/go/{bin,src,pkg}`).
+
+### `extensions.sh`
+
+Installs a curated list of VS Code / Kiro extensions via CLI (`code --install-extension ...`).
+
+### `settings.json`
+
+VS Code / Kiro user settings including editor preferences, font (Hack Nerd Font), ruler columns, spell checker languages (en/de), terminal configuration, and extension-specific settings.
+
+### `com.googlecode.iterm2.plist`
+
+An iTerm2 configuration file. Load it in iTerm2 preferences:
+
+> Preferences → General → Preferences → Load preferences from a custom URL or folder
 
 ![Load iTerm2 config](iterm2-load-config.png)
 
-### Brewfile
+### `Brewfile`
 
-A `Brewfile` contains the installed package configuration for [_Homebrew_](https://brew.sh/index_de).
-You can simply install the packages from the file by running `brew bundle` if you are in the
-current directory or by using the path to the file:
-`brew bundle dump -f ${HOME}/dev/.dotfiles/Brewfile`.
-It will install the packages from `brew`, `cask` and `mas`.
+A `Brewfile` for [Homebrew](https://brew.sh/) containing `brew`, `cask`, and `mas` packages.
 
-Creating a new file can be achieved by exporting it e.g. via [_Cakebrew_](https://www.cakebrew.com/):
+Install all packages:
 
-- Tools
-- Export Brew Installation
+```bash
+brew bundle
+```
 
-## Fresh macOS setup
+Export current installation:
 
-When setting up your mac completely new, I recommend the following steps:
+```bash
+brew bundle dump -f ${HOME}/dev/.dotfiles/Brewfile
+```
 
-- proceed the macOS configuration (`sudo sh osh.sh`).
-- Install [Homebrew](https://brew.sh/index_de)
-- Install Homebrew packages via `Brewfile` (`brew bundle`) including iTerm2.
-- Link your dotfiles (`sh setup-dotfiles.sh`)
-- Import / link iTerm2 configuration (Preferences -> Gerneral -> Preferences -> Load preferences from a custom URL or folder)
-- Read setup Java as described in [java.md](./java.md)
+### `time-machine-excludes.sh`
 
-### macOS TimeMachine
+Excludes all `node_modules` directories inside `~/dev` from Time Machine backups.
 
-Defines a list of directories (e.g. all `node_modules` directories inside the `~/dev`) that should be excluded from time machine backup (as they are quite big and can be re-installed by `npm i` after restoring a backup).
-
-To update the directories to be excluded frequently, simply add a cronjob:
+To run regularly, add a cronjob:
 
 ```bash
 crontab -e
 ```
 
-Then enter a cronjob:
-
 ```bash
 0 12 * * *  cd $HOME/dev/.dotfiles && ./time-machine-excludes.sh # every day at 12:00
 ```
 
-## local mods
+### `java.md`
 
-The following files / directories are `.gitignore`'ed:
+Instructions for setting up the Java environment using SDKMAN and Maven. See [java.md](./java.md).
 
-- `.zshrc.local`: put your machine specific zsh modifications inside you don't wish to contribute. It's content is automatically loaded by the main `.zshrc` when available.
-- `setup-dotfiles.local.sh`: place machine specific setup steps you want to execute but not wish to contribute. This script is loaded when executing `setup-dotfiles.sh`.
-- `local`: place all other config file / templates you don't want to contribute inside this directory.
+### `local/`
+
+Directory for machine-specific config files/templates that should not be committed (gitignored).
+
+## Fresh macOS setup
+
+When setting up a new Mac:
+
+1. Run the macOS configuration: `sudo sh osx.sh`
+2. Install [Homebrew](https://brew.sh/)
+3. Install Homebrew packages: `brew bundle`
+4. Link dotfiles: `sh setup-dotfiles.sh`
+5. Import/link iTerm2 configuration (Preferences → General → Preferences → Load preferences from a custom URL or folder)
+6. Install VS Code / Kiro extensions: `sh extensions.sh`
+7. Set up Go: `sh setup-go.sh`
+8. Set up Java as described in [java.md](./java.md)
+
+## Local mods
+
+The following files/directories are `.gitignore`'d:
+
+- **`.zshrc.local`** — machine-specific zsh modifications, automatically loaded by `.zshrc`
+- **`setup-dotfiles.local.sh`** — machine-specific setup steps, executed by `setup-dotfiles.sh`
+- **`local/`** — any other config files/templates you don't want to commit
