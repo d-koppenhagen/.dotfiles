@@ -1,0 +1,4 @@
+{
+  "markdown-preview-enhanced.plantumlServer": "https://gitlab-kroki-prd.gitlab.comp.db.de/plantuml/svg",
+  "plantuml.server": "https://gitlab-kroki-prd.gitlab.comp.db.de/plantuml/svg"
+}

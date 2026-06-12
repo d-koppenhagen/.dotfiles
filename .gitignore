@@ -2,6 +2,7 @@
 .bash_history
 .tmp
 .zshrc.local
+settings.local.json
 
 # ignore all files in "local" dir
 # such files are machine specific and should be committed publically
