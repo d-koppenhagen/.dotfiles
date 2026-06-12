@@ -118,7 +118,7 @@ brew bundle
 Export current installation:
 
 ```bash
-brew bundle dump -f ${HOME}/dev/.dotfiles/Brewfile
+brew bundle dump --force --file=${HOME}/dev/.dotfiles/Brewfile
 ```
 
 ### `time-machine-excludes.sh`
