@@ -103,5 +103,8 @@
   "terminal.integrated.fontFamily": "Hack Nerd Font",
   "terminal.integrated.fontSize": 14,
   "update.showReleaseNotes": false,
-  "window.zoomLevel": 1
+  "window.zoomLevel": 1,
+  "files.associations": {
+    ".zshrc.local": "shellscript"
+  }
 }

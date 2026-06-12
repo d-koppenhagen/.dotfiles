@@ -2,7 +2,7 @@
 [user]
 # Please adapt and uncomment the following lines:
 	name = Danny Koppenhagen
-	email = mail@d-koppenhagen.de
+	email = mail@k9n.dev
 
 [pull]
 	rebase = true
@@ -11,7 +11,6 @@
   template = ~/.gitmessage
 
 [core]
-	editor = /opt/homebrew/bin/code --wait
 	excludesfile = ~/.gitignore
   ignorecase = false
 
