@@ -47,3 +47,6 @@ export PATH=$PATH:/usr/local/opt/rabbitmq/sbin
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/profile.post.bash" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/profile.post.bash"
+
+# Disable Google Telemetry
+DISABLE_TELEMETRY=1
