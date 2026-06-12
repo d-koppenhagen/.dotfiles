@@ -93,6 +93,12 @@ Installs Go via Homebrew and creates the Go workspace directories (`$HOME/dev/go
 
 Installs a curated list of VS Code / Kiro extensions via CLI (`code --install-extension ...`).
 
+Export current extension list (merged and deduplicated from Kiro and VS Code):
+
+```bash
+{ kiro --list-extensions 2>/dev/null; code --list-extensions 2>/dev/null; } | sort -uf | sed 's/^/code --install-extension /' > ${HOME}/dev/.dotfiles/extensions.sh
+```
+
 ### `settings.json`
 
 VS Code / Kiro user settings including editor preferences, font (Hack Nerd Font), ruler columns, spell checker languages (en/de), terminal configuration, and extension-specific settings.
