@@ -252,6 +252,23 @@ jdk() {
   export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
   java -version
 }
+
+# Kill process blocking a given port
+# Usage: killport 4567
+killport() {
+  if [ -z "$1" ]; then
+    echo "Usage: killport <port>"
+    return 1
+  fi
+  local pid
+  pid=$(lsof -ti :"$1" 2>/dev/null)
+  if [ -z "$pid" ]; then
+    echo "No process found on port $1"
+    return 1
+  fi
+  echo "Killing process(es) on port $1: PID $pid"
+  kill -9 $pid && echo "Done."
+}
 ### Functions End
 
 ### Go development Start
