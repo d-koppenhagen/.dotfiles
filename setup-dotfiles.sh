@@ -2,6 +2,10 @@
 
 set -e
 
+# Ask for sudo password upfront and keep it alive for the script duration
+/usr/bin/sudo -v
+while true; do /usr/bin/sudo -n true; sleep 10; kill -0 "$$" || exit; done 2>/dev/null &
+
 DOTFILES_DIR="${HOME}/dev/.dotfiles"
 
 # ─── Homebrew ────────────────────────────────────────────────────────────────────
