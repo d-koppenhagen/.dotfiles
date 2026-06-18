@@ -53,6 +53,11 @@ if [ ! -d "${ZSH_CUSTOM}/plugins/zsh-autosuggestions" ]; then
   git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM}/plugins/zsh-autosuggestions"
 fi
 
+echo "Activating/cloning nx-completion..."
+if [ ! -d "${ZSH_CUSTOM}/plugins/nx-completion" ]; then
+  git clone https://github.com/jscutlery/nx-completion.git "${ZSH_CUSTOM}/plugins/nx-completion"
+fi
+
 # ─── SDKMAN ──────────────────────────────────────────────────────────────────────
 if [ ! -d "${HOME}/.sdkman" ]; then
   echo "Installing SDKMAN..."
