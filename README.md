@@ -30,6 +30,21 @@ cd ~/dev/.dotfiles
    cp ~/Library/Application\ Support/Kiro/User/settings.json settings.json
    ```
 
+1. **Back up keys (GPG)**
+
+   ```bash
+   ## Export all public keys
+   gpg -a --export >local/mypubkeys.asc
+
+   ## Export all encrypted private keys (which will also include corresponding public keys)
+   gpg -a --export-secret-keys >local/myprivatekeys.asc
+
+   ## Export gpg's trustdb to a text file
+   gpg --export-ownertrust >local/otrust.txt
+   ```
+
+   Ensure files are not committed!
+
 1. **Back up local (gitignored) files**
 
    Files in `local/`, `.zshrc.local`, and `settings.local.json` are not committed. Copy them to a secure backup location separately.
@@ -77,6 +92,7 @@ sudo sh osx.sh
 > Consider installing Kiro / VSCode first since the upcoming script will also hook install extensions and settings when this apps are already installed.
 
 The main setup script handles:
+
 - Installing Homebrew (if not present)
 - Installing all packages from `Brewfile`
 - Copying `.gitconfig` and prompting for git user name/email
@@ -135,11 +151,26 @@ vim +PluginInstall +qall
 
 ### Step 10 — GPG for signed commits (optional)
 
-```bash
-# Import your private key
-gpg --import <path-to-private-key>
+Restore the keyrings and trust database backed up during the [Backup](#back-up-keys-gpg) step. Restore from the files in `local/` (or wherever your secure backup lives):
 
-# Configure pinentry-mac
+```bash
+# Import private keys (also imports the corresponding public keys)
+gpg --import local/myprivatekeys.asc
+
+# Import public keys
+gpg --import local/mypubkeys.asc
+
+# Verify keys were imported
+gpg -K  # list secret keys
+gpg -k  # list public keys
+
+# Restore the owner trust database
+gpg --import-ownertrust local/otrust.txt
+```
+
+Configure pinentry-mac:
+
+```bash
 brew install pinentry-mac
 echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" > ~/.gnupg/gpg-agent.conf
 gpgconf --kill gpg-agent
@@ -174,7 +205,7 @@ crontab -e
 ## File overview
 
 | File / Folder | Description |
-|---|---|
+| --- | --- |
 | `.editorconfig` | EditorConfig with spaces, indent 2, UTF-8, LF |
 | `.gitconfig` | Git config with aliases, colors, LFS, pull rebase |
 | `.gitmessage` | Commit template (Angular Commit Format) |
