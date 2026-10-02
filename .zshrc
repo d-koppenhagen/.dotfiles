@@ -68,7 +68,6 @@ plugins=(
   npm
   golang
   zsh-autosuggestions
-  nx-completion
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -246,10 +245,20 @@ fromhex(){
 # run `javaversions` to see available jdk versionss
 # run e.g. `jdk 11` when output contains `11.0.1 (x86_64)`. for example:
 # 11.0.1 (x86_64) "Oracle Corporation" - "Java SE 11.0.1" /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home
+# Usage: `jdk 17` or `jdk 21`. Prefers the Homebrew keg-only JDK at
+# /opt/homebrew/opt/openjdk@<version> (these are not registered with /usr/libexec/java_home),
+# and falls back to java_home for any system-registered JDKs.
 jdk() {
   version=$1
   unset JAVA_HOME;
   export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+  unset JAVA_HOME
+  if [ -x "/opt/homebrew/opt/openjdk@${version}/bin/java" ]; then
+    export JAVA_HOME="/opt/homebrew/opt/openjdk@${version}"
+  else
+    export JAVA_HOME=$(/usr/libexec/java_home -v"$version")
+  fi
+  export PATH="$JAVA_HOME/bin:$PATH"
   java -version
 }
 
@@ -277,8 +286,8 @@ test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 ### Go development End
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/dannykoppenhagen/.sdkman"
-[[ -s "/Users/dannykoppenhagen/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/dannykoppenhagen/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # needed for git PGP-signed commits
 # also needed for sops
@@ -298,11 +307,11 @@ if [ -e ~/.zshrc.local ]; then
   source ~/.zshrc.local
 fi
 
-export PNPM_HOME="/Users/dannykoppenhagen/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
 # bun completions
-[ -s "/Users/dannykoppenhagen/.bun/_bun" ] && source "/Users/dannykoppenhagen/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -327,12 +336,15 @@ export CDK_DISABLE_CLI_TELEMETRY=true
 export STORYBOOK_DISABLE_TELEMETRY=1
 
 # Created by `pipx` on 2025-09-16 14:40:27
-export PATH="$PATH:/Users/dannykoppenhagen/.local/bin"
-
-# Kiro CLI post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
+export PATH="$PATH:$HOME/.local/bin"
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 
 # Mole shell completion
 if output="$(mole completion zsh 2>/dev/null)"; then eval "$output"; fi
+
+# Kiro (home needed for Irrlicht)
+export KIRO_HOME=$HOME/.kiro/sessions/cli
+
+# Kiro CLI post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"

@@ -12,7 +12,14 @@ source $(brew --prefix nvm)/nvm.sh
 
 # set Android Environment Variables
 # export JAVA_HOME=$(/usr/libexec/java_home) # latest java version
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+# JAVA_HOME: default to a Homebrew-installed JDK (prefer 21, fall back to 17). The Homebrew JDKs
+# are keg-only and not registered with /usr/libexec/java_home, so we point at them directly. Use
+# the `jdk <version>` function (see .zshrc) to switch per shell when a project needs another JDK.
+if [ -x /opt/homebrew/opt/openjdk@21/bin/java ]; then
+  export JAVA_HOME=/opt/homebrew/opt/openjdk@21
+elif [ -x /opt/homebrew/opt/openjdk@17/bin/java ]; then
+  export JAVA_HOME=/opt/homebrew/opt/openjdk@17
+fi
 export ANDROID_HOME=${HOME}/Library/Android/sdk
 export ANDROID_SDK_ROOT=${HOME}/Library/Android/sdk
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
@@ -43,10 +50,8 @@ export PATH="/usr/local/sbin:$PATH"
 ### RabbitMQ
 export PATH=$PATH:/usr/local/opt/rabbitmq/sbin
 
-. "$HOME/.cargo/env"
+# Disable Google Telemetry
+DISABLE_TELEMETRY=1
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/profile.post.bash" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/profile.post.bash"
-
-# Disable Google Telemetry
-DISABLE_TELEMETRY=1

@@ -18,7 +18,7 @@
   },
   "[markdown]": {
     "editor.defaultFormatter": "yzhang.markdown-all-in-one",
-    "diffEditor.ignoreTrimWhitespace": true,
+    "diffEditor.ignoreTrimWhitespace": false,
   },
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -74,8 +74,49 @@
   "git.ignoreRebaseWarning": true,
   "git.replaceTagsWhenPull": true,
   "[yaml]": {
-    "diffEditor.ignoreTrimWhitespace": true,
+    "diffEditor.ignoreTrimWhitespace": false,
   },
   "kiroAgent.trust.defaultScope": "user",
   "kiroAgent.trust.defaultPattern": "partial",
+    "extensions.autoUpdate": "on",
+  "extensions.autoUpdateDelay": 24,
+  "docker.extension.enableComposeLanguageServer": false,
+  "terminal.integrated.allowedLinkSchemes": [
+    "file",
+    "http",
+    "https",
+    "mailto",
+    "vscode",
+    "vscode-insiders",
+    "docker-desktop"
+  ],
+  "markdown-preview-enhanced.krokiServer": "https://gitlab-kroki-prd.gitlab.comp.db.de",
+  "markdown-preview-enhanced.plantumlServer": "https://gitlab-kroki-prd.gitlab.comp.db.de/plantuml/svg/",
+  "http.proxySupport": "override",
+  "http.noProxy": [
+    "kiro.dev",
+    ".kiro.dev",
+    "management.eu-central-1.kiro.dev",
+    "prod.us-east-1.telemetry.desktop.kiro.dev",
+    "codewhisperer.eu-central-1.amazonaws.com",
+    "q.eu-central-1.amazonaws.com"
+  ],
+  "plantuml.server": "https://gitlab-kroki-prd.gitlab.comp.db.de/plantuml",
+  "plantuml.render": "PlantUMLServer",
+  "asciidoc.use_kroki": true,
+  "asciidoc.preview.attributes": {
+    "kroki-server-url": "https://gitlab-kroki-prd.gitlab.comp.db.de",
+    "plantuml-server-url": "https://gitlab-kroki-prd.gitlab.comp.db.de"
+  },
+  "kiroAgent.workflows.enabled": true,
+  "yaml.disableSchemaDetection": [
+    "**/docker-compose.yml",
+    "**/docker-compose.yaml",
+    "**/docker-compose.*.yml",
+    "**/docker-compose.*.yaml",
+    "**/compose.yml",
+    "**/compose.yaml",
+    "**/compose.*.yml",
+    "**/compose.*.yaml"
+  ],
 }
