@@ -50,7 +50,6 @@
   "git.enableSmartCommit": true,
   "hediet.vscode-drawio.resizeImages": null,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "plantuml.server": "https://gitlab-kroki-prd.gitlab.comp.db.de/plantuml/svg",
   "redhat.telemetry.enabled": false,
   "terminal.external.osxExec": "iTerm2.app",
   "terminal.integrated.copyOnSelection": true,
